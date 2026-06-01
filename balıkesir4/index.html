@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balıkesir Tanıtım</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="deprem-giris" class="deprem-giris">
+    <p class="deprem-buyukluk">4.1</p>
+    <h1>Balıkesir</h1>
+    <p class="deprem-yazi">Deprem simülasyonu...</p>
+  </div>
+
+  <header>
+    <div class="ust-bar">
+      <a href="#anasayfa" class="logo">🌊 Balıkesir</a>
+      <button type="button" id="menu-btn" class="menu-btn">☰ Menü</button>
+      <nav id="menu">
+        <a href="#anasayfa">Ana Sayfa</a>
+        <a href="#hakkinda">Hakkında</a>
+        <a href="#gezilecek">Gezilecek Yerler</a>
+        <a href="#kultur">Kültür & Yemek</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="anasayfa" class="banner">
+      <div class="banner-icerik">
+        <span class="etiket">Ege Bölgesi · Plaka 10</span>
+        <h1>Balıkesir'e Hoş Geldiniz</h1>
+        <p>Ege ve Marmara kıyılarında tarih, doğa ve lezzet bir arada.</p>
+        <a href="#hakkinda" class="btn">Keşfet</a>
+      </div>
+      <div class="dalga"></div>
+    </section>
+
+    <section id="hakkinda" class="bolum">
+      <div class="kutu">
+        <h2 class="baslik">İl Hakkında</h2>
+        <p class="alt-baslik">Kısa bilgi ve genel tanıtım</p>
+        <div class="iki-kolon">
+          <div class="metin-kutu">
+            <p>
+              <strong>Balıkesir</strong>, Türkiye'nin batısında yer alır. Kuzeyde Marmara,
+              güneyde Ege Denizi vardır. Kazdağları ve zeytinlikleriyle ünlüdür.
+            </p>
+            <p>
+              Ayvalık, Edremit, Bandırma ve Erdek gibi ilçeleri turizm açısından önemlidir.
+              Plaka kodu <strong>10</strong>'dur.
+            </p>
+          </div>
+          <figure class="resim-kutu">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600" alt="Balıkesir deniz manzarası">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="gezilecek" class="bolum gri">
+      <div class="kutu">
+        <h2 class="baslik">Gezilecek Yerler</h2>
+        <p class="alt-baslik">Kategoriye göre filtreleyebilirsiniz</p>
+
+        <div class="filtreler">
+          <button type="button" class="filtre aktif" data-tur="hepsi">Hepsi</button>
+          <button type="button" class="filtre" data-tur="tarih">Tarihi</button>
+          <button type="button" class="filtre" data-tur="doga">Doğa</button>
+          <button type="button" class="filtre" data-tur="sahil">Sahil</button>
+        </div>
+
+        <div class="kartlar" id="yerler">
+          <article class="kart" data-tur="sahil">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400" alt="Ayvalık">
+            <div class="kart-icerik">
+              <span class="kart-etiket">Sahil</span>
+              <h3>Ayvalık</h3>
+              <p>Tarihi evleri ve deniziyle ünlü sahil ilçesi.</p>
+            </div>
+          </article>
+          <article class="kart" data-tur="doga">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400" alt="Kazdağları">
+            <div class="kart-icerik">
+              <span class="kart-etiket">Doğa</span>
+              <h3>Kazdağları</h3>
+              <p>Doğa yürüyüşü ve yeşil alanlarıyla bilinir.</p>
+            </div>
+          </article>
+          <article class="kart" data-tur="tarih">
+            <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=400" alt="Tarihi yapı">
+            <div class="kart-icerik">
+              <span class="kart-etiket">Tarihi</span>
+              <h3>Zağnos Paşa Camii</h3>
+              <p>Osmanlı döneminden kalma tarihi cami.</p>
+            </div>
+          </article>
+          <article class="kart" data-tur="sahil">
+            <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400" alt="Erdek plaj">
+            <div class="kart-icerik">
+              <span class="kart-etiket">Sahil</span>
+              <h3>Erdek</h3>
+              <p>Marmara kıyısında plaj ve tatil bölgesi.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kultur" class="bolum">
+      <div class="kutu">
+        <h2 class="baslik">Kültür & Yemek</h2>
+        <p class="alt-baslik">Yöresel özellikler ve lezzetler</p>
+        <div class="sekmeler">
+          <button type="button" class="sekme aktif" data-hedef="kultur-icerik">Kültür</button>
+          <button type="button" class="sekme" data-hedef="yemek-icerik">Yemek</button>
+        </div>
+        <div id="kultur-icerik" class="sekme-icerik aktif">
+          <div class="kutu-kart">🫒 <h3>Zeytincilik</h3><p>Ayvalık zeytinyağı meşhurdur.</p></div>
+          <div class="kutu-kart">💃 <h3>Halk Oyunları</h3><p>Zeybek oyunları yöreye özgüdür.</p></div>
+          <div class="kutu-kart">🧵 <h3>El Sanatları</h3><p>Kilim ve ahşap işçiliği yapılır.</p></div>
+        </div>
+        <div id="yemek-icerik" class="sekme-icerik">
+          <div class="kutu-kart">🍯 <h3>Höşmerim</h3><p>Balıkesir'in bilinen tatlısı.</p></div>
+          <div class="kutu-kart">🥗 <h3>Zeytinyağlılar</h3><p>Enginar, barbunya vb.</p></div>
+          <div class="kutu-kart">🐟 <h3>Deniz Ürünleri</h3><p>Levrek, çipura.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri" class="bolum gri">
+      <div class="kutu">
+        <h2 class="baslik">Galeri</h2>
+        <p class="alt-baslik">Balıkesir'den fotoğraflar</p>
+        <div class="galeri">
+          <figure class="galeri-item">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Ege kıyısı manzarası">
+            <figcaption>Ege Kıyısı</figcaption>
+          </figure>
+          <figure class="galeri-item">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400" alt="Zeytinlik">
+            <figcaption>Zeytinlik</figcaption>
+          </figure>
+          <figure class="galeri-item">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400" alt="Doğa">
+            <figcaption>Doğa</figcaption>
+          </figure>
+          <figure class="galeri-item">
+            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400" alt="Deniz">
+            <figcaption>Deniz</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim" class="bolum">
+      <div class="kutu">
+        <h2 class="baslik">İletişim</h2>
+        <p class="alt-baslik">Bize yazın</p>
+        <form id="form" class="form-kutu">
+          <label>Ad Soyad *</label>
+          <input type="text" id="ad" name="ad" placeholder="Adınız">
+          <span class="hata" id="ad-hata"></span>
+
+          <label>E-posta *</label>
+          <input type="email" id="eposta" name="eposta" placeholder="ornek@mail.com">
+          <span class="hata" id="eposta-hata"></span>
+
+          <label>Mesaj *</label>
+          <textarea id="mesaj" name="mesaj" rows="4" placeholder="Mesajınız..."></textarea>
+          <span class="hata" id="mesaj-hata"></span>
+
+          <label class="satir">
+            <input type="checkbox" id="onay"> Bilgilerimi paylaşmayı kabul ediyorum *
+          </label>
+          <span class="hata" id="onay-hata"></span>
+
+          <button type="submit" class="btn">Gönder</button>
+          <p id="basarili" class="basarili gizli">✓ Mesajınız alındı, teşekkürler!</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Web Programlama Dönem Projesi — Balıkesir Tanıtım Sitesi © 2026</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
