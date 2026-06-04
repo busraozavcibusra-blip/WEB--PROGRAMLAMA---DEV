@@ -1,4 +1,4 @@
-// Deprem girişi - 3 saniye sonra yavaşça kapanır
+// 1. Deprem girişi - 3 saniye sonra yavaşça kapanır
 var deprem = document.getElementById("deprem-giris");
 setTimeout(function () {
   deprem.classList.add("kapaniyor");
@@ -7,7 +7,7 @@ setTimeout(function () {
   }, 600);
 }, 3000);
 
-// Mobil menü
+// 2. Mobil menü
 var menuBtn = document.getElementById("menu-btn");
 var menu = document.getElementById("menu");
 
@@ -15,7 +15,7 @@ menuBtn.addEventListener("click", function () {
   menu.classList.toggle("acik");
 });
 
-// Yer filtreleme
+// 3. Yer filtreleme
 var filtreler = document.querySelectorAll(".filtre");
 var kartlar = document.querySelectorAll(".kart");
 
@@ -41,7 +41,7 @@ for (var i = 0; i < filtreler.length; i++) {
   });
 }
 
-// Kültür sekmeleri
+// 4. Kültür sekmeleri
 var sekmeler = document.querySelectorAll(".sekme");
 var kulturPanel = document.getElementById("kultur-icerik");
 var yemekPanel = document.getElementById("yemek-icerik");
@@ -66,7 +66,7 @@ for (var s = 0; s < sekmeler.length; s++) {
   });
 }
 
-// Form doğrulama
+// 5. Form doğrulama ve EmailJS Entegrasyonu
 var form = document.getElementById("form");
 
 form.addEventListener("submit", function (e) {
@@ -110,11 +110,42 @@ form.addEventListener("submit", function (e) {
     gecerli = false;
   }
 
+  // Form doğrulama başarılı ise e-posta gönderilir
   if (gecerli) {
-    document.getElementById("basarili").classList.remove("gizli");
-    form.reset();
-    setTimeout(function () {
-      document.getElementById("basarili").classList.add("gizli");
-    }, 4000);
+    
+    // EmailJS şablonuna (template_ejibehr) gidecek olan parametreler
+    var templateParams = {
+      from_name: ad.value,
+      reply_to: eposta.value,
+      message: mesaj.value
+    };
+
+    // Butonu geçici olarak pasif yapıp "Gönderiliyor..." yazalım
+    var submitBtn = form.querySelector("button[type='submit']");
+    var eskiButonMetni = submitBtn.textContent;
+    submitBtn.textContent = "Gönderiliyor...";
+    submitBtn.disabled = true;
+
+    // EmailJS Gönderim Tetikleyicisi
+    emailjs.send("service_ytdf34j", "template_ejibehr", templateParams)
+      .then(function(response) {
+         console.log("Başarılı!", response.status, response.text);
+         
+         // Başarı mesajını ekranda göster
+         document.getElementById("basarili").classList.remove("gizli");
+         form.reset(); // Form alanlarını temizle
+         
+         setTimeout(function () {
+           document.getElementById("basarili").classList.add("gizli");
+         }, 4000);
+      }, function(error) {
+         console.error("Hata oluştu...", error);
+         alert("Mesaj gönderilirken bir sorun oluştu. Lütfen bağlantınızı kontrol edin.");
+      })
+      .finally(function() {
+         // İşlem bittiğinde butonu eski aktif haline geri getir
+         submitBtn.textContent = eskiButonMetni;
+         submitBtn.disabled = false;
+      });
   }
 });
